@@ -295,7 +295,7 @@ describe('Testes de Envio de Evento R-2010', () => {
 })
 
 describe('Testes de Envio de Evento R-4020', () => {
-    it('Importação de arquivos', () => {
+    it.only('Importação de arquivos', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -307,7 +307,7 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it('Fechamento do R-4020', () => {
+    it.only('Fechamento do R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -322,7 +322,7 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it('Reabertura do R-4020', () => {
+    it.only('Reabertura do R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -341,7 +341,7 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it('Envio de R4020', () =>{
+    it.only('Envio de R4020', () =>{
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -397,7 +397,7 @@ describe('Testes de Envio de Evento R-4020', () => {
 })
 
 describe('Retificação de Eventos', () => {
-    it('Retificação de R-4020', () => {
+    it.only('Retificação de R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -416,7 +416,7 @@ describe('Retificação de Eventos', () => {
 })
 
 describe('Exclusão de eventos usando R9000', () => {
-    it('R9000 - r4020', () => {
+    it.only('R9000 - r4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()

@@ -55,9 +55,9 @@ describe('GT-Fácil', () => {
             pesquisarLC.novaPesquisa()
         })
 
-        it('Funcionalidades Pesquisa Específica', () => {
+        it.only('Funcionalidades Pesquisa Específica', () => {
             pesquisaEspecifica.acessar()
-            pesquisaEspecifica.pesquisaEspecifica()
+            pesquisaEspecifica.pesquisaEspecifica('Aquisição')
             pesquisaEspecifica.selecionarDados()
             //Ver depois>
             pesquisaEspecifica.verificarSimuladorCalculo()

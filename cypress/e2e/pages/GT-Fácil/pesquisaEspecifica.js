@@ -4,9 +4,9 @@ export class PesquisaEspecifica {
         cy.get('.MuiStack-root > :nth-child(3)').click()
     }
 
-    pesquisaEspecifica() {
+    pesquisaEspecifica(pesquisa) {
         cy.wait(2000)
-        cy.get('input[role="combobox"][aria-autocomplete="list"]').type('Bolsa de estágio', {delay: 100})
+        cy.get('input[role="combobox"][aria-autocomplete="list"]').type(pesquisa , {delay: 100})
         cy.get('.MuiAutocomplete-option').first().click()
     }
 
