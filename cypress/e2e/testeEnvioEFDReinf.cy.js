@@ -56,6 +56,24 @@ describe('Testes de Envio de Evento R-4010', () => {
         cy.wait(2000)
     })
 
+    it('Envio de R4010', () => {
+        ambTeste.acessar()
+        login.fazerLoginCompleto(username, password)
+        gtreinf.acessar()
+        enviarEFDReinf.acessar()
+        enviarEFDReinf.escolherMes('2')
+        cy.wait(200)
+        enviarEFDReinf.eventoAEnviar('r4010')
+        enviarEFDReinf.clicarAplicar()
+        cy.wait(3000)
+        enviarEFDReinf.checkEmSelects(1)
+        enviarEFDReinf.enviarEFDReinf()
+        enviarEFDReinf.confirmarEnvio()
+        cy.wait(2000)
+        enviarEFDReinf.clicarPagamentosEnviados()
+        enviarEFDReinf.verResultado()
+    })
+
     it('Fechamento do R-4010', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
@@ -91,25 +109,6 @@ describe('Testes de Envio de Evento R-4010', () => {
         cy.wait(2000)
         enviarEFDReinf.verificarReabertura()
         cy.wait(2000)
-    })
-
-    it('Envio de R4010', () => {
-        ambTeste.acessar()
-        login.fazerLoginCompleto(username, password)
-        gtreinf.acessar()
-        enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('2')
-        cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r4010')
-        enviarEFDReinf.clicarAplicar()
-        cy.wait(3000)
-        enviarEFDReinf.checkEmSelects(1)
-        enviarEFDReinf.enviarEFDReinf()
-        enviarEFDReinf.confirmarEnvio()
-        cy.wait(2000)
-        enviarEFDReinf.clicarPagamentosEnviados()
-        enviarEFDReinf.verResultado()
-
     })
 
     it.skip('Fluxo completo', () => {
@@ -154,8 +153,8 @@ describe('Testes de Envio de Evento R-4010', () => {
 })
 
 describe('Testes de Envio de Evento R-2010', () => {
-    it('Importação de arquivos', () => {
-        ambProducao.acessar()
+    it.skip('Importação de arquivos', () => {
+        ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         cy.wait(2000)
         gtreinf.acessar()
@@ -167,40 +166,8 @@ describe('Testes de Envio de Evento R-2010', () => {
         cy.wait(2000)
     })
 
-    it('Fechamento do R-2010', () => {
-        ambProducao.acessar()
-        login.fazerLoginCompleto(username, password)
-        gtreinf.acessar()
-        enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('4')
-        cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r2010')
-        enviarEFDReinf.clicarAplicar()
-        cy.wait(3000)
-        enviarEFDReinf.fechamentoEventosPeriodicos()
-        enviarEFDReinf.confirmarEnvio()
-        cy.wait(2000)
-    })
-
-    it('Reabertura do R-2010', () => {
-        ambProducao.acessar()
-        login.fazerLoginCompleto(username, password)
-        gtreinf.acessar()
-        enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('4')
-        cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r2010')
-        enviarEFDReinf.clicarAplicar()
-        enviarEFDReinf.verificarFechamento()
-        enviarEFDReinf.reaberturaEventosPeriodicos()
-        enviarEFDReinf.eventoAEnviar('r2010')
-        enviarEFDReinf.clicarAplicar()
-        enviarEFDReinf.verificarReabertura()
-        cy.wait(2000)
-    })
-
-    it('Envio de R-2010', () =>{
-        ambProducao.acessar()
+    it.skip('Envio de R-2010', () =>{
+        ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
@@ -216,40 +183,39 @@ describe('Testes de Envio de Evento R-2010', () => {
         enviarEFDReinf.verResultado()
     })
 
+    it.skip('Fechamento do R-2010', () => {
+        ambTeste.acessar()
+        login.fazerLoginCompleto(username, password)
+        gtreinf.acessar()
+        enviarEFDReinf.acessar()
+        enviarEFDReinf.escolherMes('4')
+        cy.wait(200)
+        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.clicarAplicar()
+        cy.wait(3000)
+        enviarEFDReinf.fechamentoEventosPeriodicos()
+        enviarEFDReinf.confirmarEnvio()
+        cy.wait(2000)
+    })
+
+    it.skip('Reabertura do R-2010', () => {
+        ambTeste.acessar()
+        login.fazerLoginCompleto(username, password)
+        gtreinf.acessar()
+        enviarEFDReinf.acessar()
+        enviarEFDReinf.escolherMes('4')
+        cy.wait(200)
+        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.clicarAplicar()
+        enviarEFDReinf.verificarFechamento()
+        enviarEFDReinf.reaberturaEventosPeriodicos()
+        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.clicarAplicar()
+        enviarEFDReinf.verificarReabertura()
+        cy.wait(2000)
+    })
+
     it.skip('Fluxo completo', () => {
-        // ambProducao.acessar()
-        // login.fazerLoginCompleto(username, password)
-        // gtreinf.acessar()
-        // documentosFiscais.acessar()
-        // documentosFiscais.clicarImportarArquivos()
-        // documentosFiscais.escolherTipoArquivo(3)
-        // documentosFiscais.selecionarArquivo('cypress/fixtures/PlanilhaGTReinf_R-2010testes 1.xlsx')
-        // documentosFiscais.fecharAbaImportacao()
-        // cy.wait(2000)
-        // enviarEFDReinf.acessar()
-        // enviarEFDReinf.escolherMes('4')
-        // cy.wait(200)
-        // enviarEFDReinf.eventoAEnviar('r2010')
-        // enviarEFDReinf.clicarAplicar()
-        // cy.wait(3000)
-        // enviarEFDReinf.fechamentoEventosPeriodicos()
-        // enviarEFDReinf.confirmarEnvio()
-        // enviarEFDReinf.eventoAEnviar('r2010')
-        // enviarEFDReinf.clicarAplicar()
-        // enviarEFDReinf.verificarFechamento()
-        // enviarEFDReinf.reaberturaEventosPeriodicos()
-        // enviarEFDReinf.eventoAEnviar('r2010')
-        // enviarEFDReinf.clicarAplicar()
-        // enviarEFDReinf.verificarReabertura()
-        // cy.wait(2000)
-        // enviarEFDReinf.eventoAEnviar('r2010')//
-        // enviarEFDReinf.clicarAplicar()
-        // enviarEFDReinf.checkEmSelects(1)
-        // enviarEFDReinf.enviarEFDReinf()
-        // enviarEFDReinf.confirmarEnvio()
-        // cy.wait(2000)
-        // enviarEFDReinf.clicarPagamentosEnviados()
-        // enviarEFDReinf.verResultado()
         ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         cy.wait(2000)
@@ -295,7 +261,7 @@ describe('Testes de Envio de Evento R-2010', () => {
 })
 
 describe('Testes de Envio de Evento R-4020', () => {
-    it.only('Importação de arquivos', () => {
+    it('Importação de arquivos', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -307,7 +273,24 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it.only('Fechamento do R-4020', () => {
+    it('Envio de R4020', () =>{
+        ambTeste.acessar()
+        login.fazerLoginCompleto(username, password)
+        gtreinf.acessar()
+        enviarEFDReinf.acessar()
+        enviarEFDReinf.escolherMes('7')
+        cy.wait(200)
+        enviarEFDReinf.eventoAEnviar('r4020')
+        enviarEFDReinf.clicarAplicar()
+        enviarEFDReinf.checkEmSelects(1)
+        enviarEFDReinf.enviarEFDReinf()
+        enviarEFDReinf.confirmarEnvio()
+        cy.wait(2000)
+        enviarEFDReinf.clicarPagamentosEnviados()
+        enviarEFDReinf.verResultado()
+    })
+
+    it('Fechamento do R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -322,7 +305,7 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it.only('Reabertura do R-4020', () => {
+    it('Reabertura do R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -341,22 +324,7 @@ describe('Testes de Envio de Evento R-4020', () => {
         cy.wait(2000)
     })
 
-    it.only('Envio de R4020', () =>{
-        ambTeste.acessar()
-        login.fazerLoginCompleto(username, password)
-        gtreinf.acessar()
-        enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('7')
-        cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r4020')
-        enviarEFDReinf.clicarAplicar()
-        enviarEFDReinf.checkEmSelects(1)
-        enviarEFDReinf.enviarEFDReinf()
-        enviarEFDReinf.confirmarEnvio()
-        cy.wait(2000)
-        enviarEFDReinf.clicarPagamentosEnviados()
-        enviarEFDReinf.verResultado()
-    })
+    
 
     it.skip('Fluxo completo', () => {
         ambTeste.acessar()
@@ -397,7 +365,7 @@ describe('Testes de Envio de Evento R-4020', () => {
 })
 
 describe('Retificação de Eventos', () => {
-    it.only('Retificação de R-4020', () => {
+    it('Retificação de R-4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
@@ -416,7 +384,7 @@ describe('Retificação de Eventos', () => {
 })
 
 describe('Exclusão de eventos usando R9000', () => {
-    it.only('R9000 - r4020', () => {
+    it('R9000 - r4020', () => {
         ambTeste.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()

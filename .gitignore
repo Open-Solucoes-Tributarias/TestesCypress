@@ -5,3 +5,5 @@ node_modules/
 cypress/videos/
 cypress/screenshots/
 curso.py
+game_data.py
+tempCodeRunnerFile.py

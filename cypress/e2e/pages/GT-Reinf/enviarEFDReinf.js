@@ -93,11 +93,17 @@ export class EnviarEFDReinf {
     fechamentoEventosPeriodicos(){
         cy.get(':nth-child(4) > .MuiBox-root > .MuiInputBase-root > .MuiSelect-select').click({force: true})
         cy.wait(200)
-        cy.get('[data-value="r2099"]').click({force: true})
+        cy.get('[data-value="r2099"]').click();
         cy.wait(200)
         cy.contains('APLICAR').click({force: true})
         cy.wait(200)
-        cy.contains('FECHAR R-2099 SEM MOVIMENTO').click({force: true})
+        cy.get('#root div:nth-child(1) > span.css-qszdlg > span.PrivateSwitchBase-root > input.PrivateSwitchBase-input').check();
+        cy.wait(200)
+        cy.get('button[type="button"]').contains('Enviar').click()
+        cy.wait(200)
+        cy.contains('Enviar R-2099').click()
+        cy.wait(2500)
+        cy.contains('Fechar').click({force: true})
         cy.wait(200)
     }
 
@@ -109,7 +115,7 @@ export class EnviarEFDReinf {
         cy.contains('APLICAR').click({force: true})
         cy.wait(200)
         cy.contains('Reabrir evento').click({force: true})
-        cy.wait(500)
+        cy.wait(2500)
         cy.contains('Fechar').click({force: true})
         cy.wait(200)
     }
@@ -123,7 +129,7 @@ export class EnviarEFDReinf {
 
     confirmarEnvio(){
         cy.get('body').then($body => {
-            if ($body.find(':contains("Período 04/2025 está fechado. Para fazer modificações no período é necessário o envio de um evento de REABERTURA.")').filter(':visible').length > 0) {
+            if ($body.find(':contains("Período 05/2025 está fechado. Para fazer modificações no período é necessário o envio de um evento de REABERTURA.")').filter(':visible').length > 0) {
                 this.reaberturaEventosPeriodicos();
                 cy.wait(200);
             }
