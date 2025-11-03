@@ -40,7 +40,7 @@ const wpassword = 'XXXXXXXXX'
 
 describe('Testes de Envio de Evento R-2010', () => {
     it('Importação de arquivos', () => {
-        ambTeste.acessar()
+        ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         cy.wait(2000)
         gtreinf.acessar()
@@ -53,7 +53,7 @@ describe('Testes de Envio de Evento R-2010', () => {
     })
 
     it('Envio de R-2010', () =>{
-        ambTeste.acessar()
+        ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
@@ -70,7 +70,7 @@ describe('Testes de Envio de Evento R-2010', () => {
     })
 
     it('Fechamento do R-2010', () => {
-        ambTeste.acessar()
+        ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
@@ -84,7 +84,7 @@ describe('Testes de Envio de Evento R-2010', () => {
     })
 
     it('Reabertura do R-2010', () => {
-        ambTeste.acessar()
+        ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
