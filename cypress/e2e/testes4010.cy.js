@@ -1,4 +1,4 @@
-/// <reference types="cypress"/>
+/// <reference types="cypress" />
 
 import { AmbTeste } from "./ambTeste"
 const ambTeste = new AmbTeste()
@@ -38,29 +38,29 @@ const username = 'filipemitre@opensolucoestributarias.com.br'
 const password = 'Open@2025'
 const wpassword = 'XXXXXXXXX'
 
-describe('Testes de Envio de Evento R-2010', () => {
+describe('Testes de Envio de Evento R-4010', () => {
     it('Importação de arquivos', () => {
         ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
-        cy.wait(2000)
         gtreinf.acessar()
         documentosFiscais.acessar()
         documentosFiscais.clicarImportarArquivos()
-        documentosFiscais.escolherTipoArquivo(3)
-        documentosFiscais.selecionarArquivo('cypress/fixtures/PlanilhaGTReinf_R-2010testes 1.xlsx')
+        documentosFiscais.escolherTipoArquivo(4)
+        documentosFiscais.selecionarArquivo('cypress/fixtures/PlanilhaGTReinf_4010_instrucoes.xlsx')
         documentosFiscais.fecharAbaImportacao()
         cy.wait(2000)
     })
 
-    it('Envio de R-2010', () =>{
+    it('Envio de R4010', () => {
         ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('6')
+        enviarEFDReinf.escolherMes('2')
         cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.eventoAEnviar('r4010')
         enviarEFDReinf.clicarAplicar()
+        cy.wait(3000)
         enviarEFDReinf.checkEmSelects(1)
         enviarEFDReinf.enviarEFDReinf()
         enviarEFDReinf.confirmarEnvio()
@@ -69,33 +69,39 @@ describe('Testes de Envio de Evento R-2010', () => {
         enviarEFDReinf.verResultado()
     })
 
-    it('Fechamento do R-2010', () => {
+    it('Fechamento do R-4010', () => {
         ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('6')
+        enviarEFDReinf.escolherMes('2')
         cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.eventoAEnviar('r4010')
         enviarEFDReinf.clicarAplicar()
-        cy.wait(3000)
-        enviarEFDReinf.fechamentoEventosPeriodicos()
+        enviarEFDReinf.escolherMes('2')
+        cy.wait(200)
+        enviarEFDReinf.fechamentoSerie4000()
+        enviarEFDReinf.aceitarOperacao()
         cy.wait(2000)
     })
 
-    it('Reabertura do R-2010', () => {
+    it('Reabertura do R-4010', () => {
         ambProducao.acessar()
         login.fazerLoginCompleto(username, password)
         gtreinf.acessar()
         enviarEFDReinf.acessar()
-        enviarEFDReinf.escolherMes('6')
+        enviarEFDReinf.escolherMes('2')
         cy.wait(200)
-        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.eventoAEnviar('r4010')
         enviarEFDReinf.clicarAplicar()
         enviarEFDReinf.verificarFechamento()
-        enviarEFDReinf.reaberturaEventosPeriodicos()
-        enviarEFDReinf.eventoAEnviar('r2010')
+        enviarEFDReinf.reaberturaSerie4000()
+        enviarEFDReinf.aceitarOperacao()
+        enviarEFDReinf.escolherMes('2')
+        cy.wait(200)
+        enviarEFDReinf.eventoAEnviar('r4010')
         enviarEFDReinf.clicarAplicar()
+        cy.wait(2000)
         enviarEFDReinf.verificarReabertura()
         cy.wait(2000)
     })
