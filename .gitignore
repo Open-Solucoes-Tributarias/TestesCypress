@@ -4,6 +4,6 @@ node_modules/
 .DS_Store
 cypress/videos/
 cypress/screenshots/
-curso.py
+automate.py
 game_data.py
 tempCodeRunnerFile.py

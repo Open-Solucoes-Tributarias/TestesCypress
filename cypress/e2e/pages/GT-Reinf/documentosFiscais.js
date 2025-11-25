@@ -4,7 +4,7 @@ export class DocumentosFiscais {
     }
     
     clicarImportarArquivos(){
-        cy.get('.css-1dhfk0n > .MuiButtonBase-root').click()
+        cy.contains('button', 'Importar arquivos').click()
     }
 
     // NFS-e/NF-e(xml) => 1
@@ -22,9 +22,14 @@ export class DocumentosFiscais {
 
     selecionarArquivo(caminhoDoArquivo) {
         cy.get('input[type="file"]').selectFile(caminhoDoArquivo, { force: true });
-        cy.wait(5000)
-        cy.get('.MuiDialogActions-root > .MuiButtonBase-root').click()
+
+        // Espera a mensagem de análise sumir
+        cy.contains('Analisando os dados enviados', { timeout: 30000 }).should('not.exist');
+
+        // Clica no botão de confirmação
+        cy.get('.MuiDialogActions-root > .MuiButtonBase-root').click();
     }
+
 
     clicarPeriodo(){
         cy.get('.MuiGrid2-container > :nth-child(2) > .MuiBox-root > button').click()
